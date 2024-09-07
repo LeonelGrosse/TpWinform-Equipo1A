@@ -10,6 +10,7 @@ namespace Catalogo
 {
     internal class ArticuloDatos
     {
+        /*
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
@@ -47,5 +48,6 @@ namespace Catalogo
             }
 
         }
+        */
     }
 }
