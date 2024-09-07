@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dominio;
+using negocio;
 
 namespace Catalogo
 {
     public partial class Form1 : Form
     {
+        private List<articulo> listaArticulo; 
         public Form1()
         {
             InitializeComponent();
@@ -19,8 +22,18 @@ namespace Catalogo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //ArticuloDatos negocio = new ArticuloDatos();
-            //dgvArticulos.DataSource = negocio.listar();
+            articuloNegocio artNegocio = new articuloNegocio();
+            try
+            {
+                listaArticulo = artNegocio.listar();
+                dgvArticulos.DataSource = listaArticulo;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
