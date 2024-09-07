@@ -15,11 +15,14 @@ namespace negocio
 
         public List<articulo> listar()
         {
-            string consutla = "Select id, Codigo, Nombre, Descripcion, Precio, idMarca, IdCategoria from ARTICULOS";
-            
+            //string consutla = "Select id, Codigo, Nombre, Descripcion, Precio, idMarca, IdCategoria from ARTICULOS";
+
+            string select = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id marcID, M.Descripcion marcDesc, C.Id catID, C.Descripcion catDesc, Precio, I.Id imgID, I.ImagenUrl imgUrl";
+            string from = " FROM ARTICULOS A INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES AS I ON I.IdArticulo = A.Id";
+
             try
             {
-                datos.setConsulta(consutla);
+                datos.setConsulta(select + from);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -30,6 +33,21 @@ namespace negocio
                     aux.nombre = (string)datos.Lector["Nombre"];
                     aux.descripcion = (string)datos.Lector["Descripcion"];
                     aux.precio = (decimal)datos.Lector["Precio"];
+
+                    aux.marca = new marca();
+                    aux.marca.idMarca = (int)datos.Lector["marcID"];
+                    aux.marca.nombre = (string)datos.Lector["marcDesc"];
+
+                    aux.categoria = new categoria();
+                    aux.categoria.idCategoria = (int)datos.Lector["catID"];
+                    aux.categoria.nombre = (string)datos.Lector["catDesc"];
+
+                    aux.imagen = new imagen();
+                    if (!(datos.Lector["imgID"] is DBNull))
+                    {
+                        aux.imagen.idImagen = (int)datos.Lector["imgID"];
+                        aux.imagen.urlImagen = (string)datos.Lector["imgUrl"];
+                    }
 
                     lista.Add(aux);
                 }
