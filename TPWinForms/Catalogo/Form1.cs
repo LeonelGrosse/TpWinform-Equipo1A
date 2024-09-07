@@ -16,5 +16,11 @@ namespace Catalogo
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ArticuloDatos negocio = new ArticuloDatos();
+            dgvArticulos.DataSource = negocio.listar();
+        }
     }
 }
