@@ -8,7 +8,7 @@ using dominio;
 
 namespace negocio
 {
-    internal class marcaNegocio
+    public class marcaNegocio
     {
         List<marca> lista = new List<marca>();
         accesoDatos datos = new accesoDatos();

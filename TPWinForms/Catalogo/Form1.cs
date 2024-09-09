@@ -35,5 +35,17 @@ namespace Catalogo
             }
 
         }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            frmMarcaCategoria marca = new frmMarcaCategoria();
+            marca.ShowDialog();
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            frmMarcaCategoria categorias = new frmMarcaCategoria();
+            categorias.ShowDialog();
+        }
     }
 }
