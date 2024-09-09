@@ -38,13 +38,13 @@ namespace Catalogo
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
-            frmMarcaCategoria marca = new frmMarcaCategoria();
+            frmMarcaCategoria marca = new frmMarcaCategoria(true); // al manar el TRUE, se inica que se quiere ver MARCAS
             marca.ShowDialog();
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
-            frmMarcaCategoria categorias = new frmMarcaCategoria();
+            frmMarcaCategoria categorias = new frmMarcaCategoria(false); // al manar el FALSE, se inica que se quiere ver CATEGORIAS
             categorias.ShowDialog();
         }
     }

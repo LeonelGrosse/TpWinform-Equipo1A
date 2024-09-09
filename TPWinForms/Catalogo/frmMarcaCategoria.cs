@@ -15,29 +15,53 @@ namespace Catalogo
 {
     public partial class frmMarcaCategoria : Form
     {
+        private bool marca = true;
         List<marca> marcaLista = new List<marca>();
-        public frmMarcaCategoria()
+        List<categoria> categoriaLista = new List<categoria>();
+        public frmMarcaCategoria(bool marca)
         {
             InitializeComponent();
+            this.marca = marca;
         }
 
         private void frmMarcaCategoria_Load(object sender, EventArgs e)
         {
             cargar();
         }
-        private void cargar() 
+        private void cargar()
         {
-            marcaNegocio marcaNegocio = new marcaNegocio();
-
-            try
+            if (marca == true)
             {
-                marcaLista = marcaNegocio.listar();
-                dgwMarCat.DataSource = marcaLista;
+                marcaNegocio marcaNegocio = new marcaNegocio();
+
+                try
+                {
+                    marcaLista = marcaNegocio.listar();
+                    dgwMarCat.DataSource = marcaLista;
+
+                    this.Text = " MARCA ";
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch (Exception ex)
+            else
             {
+                categoriaNegocio categoriaNegocio = new categoriaNegocio();
 
-                throw ex;
+                try
+                {
+                    categoriaLista = categoriaNegocio.listar();
+                    dgwMarCat.DataSource = categoriaLista;
+
+                    this.Text = " CATEGORIA ";
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
             }
         }
     }
