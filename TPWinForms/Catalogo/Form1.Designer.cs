@@ -31,7 +31,9 @@
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.btnMarcas = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
+            this.pbxImagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -39,12 +41,13 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(12, 12);
             this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(670, 297);
+            this.dgvArticulos.Size = new System.Drawing.Size(805, 297);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnMarcas
             // 
-            this.btnMarcas.Location = new System.Drawing.Point(244, 315);
+            this.btnMarcas.Location = new System.Drawing.Point(244, 316);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(140, 54);
             this.btnMarcas.TabIndex = 1;
@@ -54,7 +57,7 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(390, 315);
+            this.btnCategorias.Location = new System.Drawing.Point(440, 317);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(144, 53);
             this.btnCategorias.TabIndex = 2;
@@ -62,18 +65,30 @@
             this.btnCategorias.UseVisualStyleBackColor = true;
             this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
+            // pbxImagen
+            // 
+            this.pbxImagen.Location = new System.Drawing.Point(839, 12);
+            this.pbxImagen.Name = "pbxImagen";
+            this.pbxImagen.Size = new System.Drawing.Size(363, 297);
+            this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxImagen.TabIndex = 3;
+            this.pbxImagen.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1247, 597);
+            this.Controls.Add(this.pbxImagen);
             this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.btnMarcas);
             this.Controls.Add(this.dgvArticulos);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,6 +98,7 @@
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Button btnMarcas;
         private System.Windows.Forms.Button btnCategorias;
+        private System.Windows.Forms.PictureBox pbxImagen;
     }
 }
 

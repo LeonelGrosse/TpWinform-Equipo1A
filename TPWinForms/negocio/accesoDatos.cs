@@ -14,7 +14,7 @@ namespace negocio
         private SqlConnection conexion;         //establece al coneccion
         private SqlCommand comando;             //para realizar las acciones
         private SqlDataReader lector;           // trae los datos
-        public SqlDataReader Lector             // COn esta property se puyede leer el lecto del exterior
+        public SqlDataReader Lector             // Con esta property se puyede leer el lecto del exterior
         {
             get { return lector; }
         }
@@ -58,6 +58,10 @@ namespace negocio
             }
         }
 
+        public void setParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);      //Para setear un valor a una columna cuando se haga la consulta
+        }
         public void cerrarConexion()
         {
             if (lector != null)
