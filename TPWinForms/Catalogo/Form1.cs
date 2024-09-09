@@ -70,5 +70,10 @@ namespace Catalogo
             categorias.ShowDialog();
         }
 
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo alta = new frmAgregarArticulo();
+            alta.ShowDialog(); 
+        }
     }
 }
