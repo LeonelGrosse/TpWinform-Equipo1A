@@ -74,7 +74,7 @@ namespace Catalogo
                 articulo.descripcion = txtDescripcion.Text;
                 articulo.marca = (marca)cbxMarca.SelectedItem;
                 articulo.categoria =(categoria)cbxCategoria.SelectedItem;
-                articulo.precio = int.Parse(txtPrecio.Text);                     //Aca se rompe si se quiere agregar o modificar un articulo y no se ingresa un int. La tabla de sql es dato decimal pero no se como hacer para que tome numero float
+                articulo.precio = (decimal)float.Parse(txtPrecio.Text);                     //Aca se rompe si se quiere agregar o modificar un articulo y no se ingresa un int. La tabla de sql es dato decimal pero no se como hacer para que tome numero float
 
                 if (articulo.idArticulo != 0)
                 {
