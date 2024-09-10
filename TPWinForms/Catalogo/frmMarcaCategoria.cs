@@ -107,7 +107,34 @@ namespace Catalogo
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (marca == true)
+                {
+                    marcaNegocio marcNegocio = new marcaNegocio();
+                    marca select = (marca)dgwMarCat.CurrentRow.DataBoundItem;
 
+                    marcNegocio.eliminar(select.idMarca);
+
+                    MessageBox.Show(" MARCA ELIMINADA ");
+                }
+                else
+                {
+                    categoriaNegocio catNegocio = new categoriaNegocio();
+                    categoria select = (categoria)dgwMarCat.CurrentRow.DataBoundItem;
+
+                    catNegocio.eliminar(select.idCategoria);
+
+                    MessageBox.Show(" CATEGORIA ELIMINADA ");
+
+                }
+                cargar() ;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
