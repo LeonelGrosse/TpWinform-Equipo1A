@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 597);
+            this.ClientSize = new System.Drawing.Size(1236, 407);
             this.Controls.Add(this.btnBorrarArticulo);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.pbxImagen);

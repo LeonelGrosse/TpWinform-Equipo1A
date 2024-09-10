@@ -51,7 +51,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(21, 294);
+            this.lblNombre.Location = new System.Drawing.Point(16, 293);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(109, 25);
             this.lblNombre.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(26, 323);
+            this.btnAgregar.Location = new System.Drawing.Point(58, 335);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(134, 53);
             this.btnAgregar.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(166, 324);
+            this.btnEliminar.Location = new System.Drawing.Point(230, 335);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(134, 53);
             this.btnEliminar.TabIndex = 4;
@@ -95,6 +95,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.dgwMarCat);
             this.Name = "frmMarcaCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMarcaCategoria";
             this.Load += new System.EventHandler(this.frmMarcaCategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwMarCat)).EndInit();

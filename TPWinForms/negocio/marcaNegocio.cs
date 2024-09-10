@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
@@ -69,10 +70,10 @@ namespace negocio
         }
         public void eliminar(int id)
         {
-            string consutla = "DELETE FROM MARCAS WHERE Id = @ID";
+            string consulta = "DELETE FROM MARCAS WHERE Id = @ID";
             try
             {
-                datos.setConsulta(consutla);
+                datos.setConsulta(consulta);
                 datos.setParametro("@ID", id);
                 datos.ejecutarAccion();
             }

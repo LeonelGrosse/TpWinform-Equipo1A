@@ -74,7 +74,7 @@ namespace negocio
             {
                 datos.setConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (@cod, @nom, @desc, @idMarca, @idCategoria, @precio)");
                 datos.setParametro("@cod", nuevo.codigo);
-                datos.setParametro("@nom", nuevo.nombre);
+                datos.setParametro("@nom", nuevo.nombre);            
                 datos.setParametro("@desc", nuevo.descripcion);
                 datos.setParametro("@idMarca", nuevo.marca.idMarca);
                 datos.setParametro("@idCategoria", nuevo.categoria.idCategoria);

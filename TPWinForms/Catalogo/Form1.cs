@@ -22,6 +22,11 @@ namespace Catalogo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+
+        private void cargar()
+        {
             articuloNegocio artNegocio = new articuloNegocio();
             try
             {
@@ -36,7 +41,6 @@ namespace Catalogo
 
                 throw ex;
             }
-
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)                 //Cambia la imagen del articulo al moverse por la tabla
@@ -73,7 +77,8 @@ namespace Catalogo
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             frmAgregarArticulo alta = new frmAgregarArticulo();
-            alta.ShowDialog(); 
+            alta.ShowDialog();
+            cargar();
         }
     }
 }
