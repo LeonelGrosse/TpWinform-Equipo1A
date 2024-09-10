@@ -41,17 +41,20 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(12, 12);
+            this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(805, 297);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnMarcas
             // 
-            this.btnMarcas.Location = new System.Drawing.Point(244, 316);
+            this.btnMarcas.Location = new System.Drawing.Point(350, 329);
             this.btnMarcas.Name = "btnMarcas";
-            this.btnMarcas.Size = new System.Drawing.Size(140, 54);
+            this.btnMarcas.Size = new System.Drawing.Size(140, 51);
             this.btnMarcas.TabIndex = 1;
             this.btnMarcas.Text = "MARCAS";
             this.btnMarcas.UseVisualStyleBackColor = true;
@@ -59,7 +62,7 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(440, 317);
+            this.btnCategorias.Location = new System.Drawing.Point(496, 329);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(144, 53);
             this.btnCategorias.TabIndex = 2;
@@ -78,7 +81,7 @@
             // 
             // btnAgregarArticulo
             // 
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(26, 402);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(11, 329);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(174, 51);
             this.btnAgregarArticulo.TabIndex = 4;
@@ -88,7 +91,7 @@
             // 
             // btnBorrarArticulo
             // 
-            this.btnBorrarArticulo.Location = new System.Drawing.Point(231, 402);
+            this.btnBorrarArticulo.Location = new System.Drawing.Point(191, 329);
             this.btnBorrarArticulo.Name = "btnBorrarArticulo";
             this.btnBorrarArticulo.Size = new System.Drawing.Size(153, 51);
             this.btnBorrarArticulo.TabIndex = 5;
