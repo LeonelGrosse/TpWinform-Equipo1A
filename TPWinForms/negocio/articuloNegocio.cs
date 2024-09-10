@@ -91,5 +91,32 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void modificar(articulo art)
+        {
+            accesoDatos datos = new accesoDatos();
+            try
+            {
+                datos.setConsulta("update ARTICULOS set Codigo = @cod, Nombre = @nom, Descripcion = @desc, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio where Id = @id");
+                datos.setParametro("@cod", art.codigo);
+                datos.setParametro("@nom", art.nombre);
+                datos.setParametro("@desc", art.descripcion);
+                datos.setParametro("@idMarca", art.marca.idMarca);
+                datos.setParametro("@idCategoria", art.categoria.idCategoria);
+                datos.setParametro("@precio", art.precio);
+                datos.setParametro("@id", art.idArticulo);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

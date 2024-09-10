@@ -80,5 +80,14 @@ namespace Catalogo
             alta.ShowDialog();
             cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            articulo seleccionado;
+            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.pbxImagen = new System.Windows.Forms.PictureBox();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.btnBorrarArticulo = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +53,7 @@
             // 
             // btnMarcas
             // 
-            this.btnMarcas.Location = new System.Drawing.Point(350, 329);
+            this.btnMarcas.Location = new System.Drawing.Point(513, 329);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(140, 51);
             this.btnMarcas.TabIndex = 1;
@@ -62,7 +63,7 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(496, 329);
+            this.btnCategorias.Location = new System.Drawing.Point(659, 329);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(144, 53);
             this.btnCategorias.TabIndex = 2;
@@ -83,7 +84,7 @@
             // 
             this.btnAgregarArticulo.Location = new System.Drawing.Point(11, 329);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
-            this.btnAgregarArticulo.Size = new System.Drawing.Size(174, 51);
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(141, 51);
             this.btnAgregarArticulo.TabIndex = 4;
             this.btnAgregarArticulo.Text = "Agregar Articulo";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
@@ -91,18 +92,29 @@
             // 
             // btnBorrarArticulo
             // 
-            this.btnBorrarArticulo.Location = new System.Drawing.Point(191, 329);
+            this.btnBorrarArticulo.Location = new System.Drawing.Point(305, 329);
             this.btnBorrarArticulo.Name = "btnBorrarArticulo";
             this.btnBorrarArticulo.Size = new System.Drawing.Size(153, 51);
             this.btnBorrarArticulo.TabIndex = 5;
             this.btnBorrarArticulo.Text = "Borrar Articulo";
             this.btnBorrarArticulo.UseVisualStyleBackColor = true;
             // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(158, 329);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(141, 51);
+            this.btnModificar.TabIndex = 6;
+            this.btnModificar.Text = "Modificar Articulo";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 407);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBorrarArticulo);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.pbxImagen);
@@ -127,6 +139,7 @@
         private System.Windows.Forms.PictureBox pbxImagen;
         private System.Windows.Forms.Button btnAgregarArticulo;
         private System.Windows.Forms.Button btnBorrarArticulo;
+        private System.Windows.Forms.Button btnModificar;
     }
 }
 
