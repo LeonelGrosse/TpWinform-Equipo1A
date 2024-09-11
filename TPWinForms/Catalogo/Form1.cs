@@ -32,8 +32,7 @@ namespace Catalogo
             {
                 listaArticulo = artNegocio.listar();
                 dgvArticulos.DataSource = listaArticulo;
-
-                dgvArticulos.Columns["imagen"].Visible = false;           //Hace desaparecer la columna imagen en la grid view
+                ocultarColumnas();
                 cargarImagen(listaArticulo[0].imagen.urlImagen);           //Carga la imagen del primer articulo de la lista
             }
             catch (Exception ex)
@@ -43,10 +42,19 @@ namespace Catalogo
             }
         }
 
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["idArticulo"].Visible = false;
+            dgvArticulos.Columns["imagen"].Visible = false;
+        }
+
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)                 //Cambia la imagen del articulo al moverse por la tabla
         {
-            articulo seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;        
-            cargarImagen(seleccionado.imagen.urlImagen);
+            if(dgvArticulos.CurrentRow != null)
+            {
+                articulo seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;        
+                cargarImagen(seleccionado.imagen.urlImagen);
+            }
         }
 
         private void cargarImagen(string imagen)
@@ -109,6 +117,25 @@ namespace Catalogo
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            List<articulo> listaFiltrada;
+            string filtro = txtBusqueda.Text;
+
+            if(filtro != "")
+            {               
+                listaFiltrada = listaArticulo.FindAll(x => x.nombre.ToUpper().Contains(filtro.ToUpper()) || x.marca.nombre.ToUpper().Contains(filtro.ToUpper()) || x.categoria.nombre.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {               
+                listaFiltrada = listaArticulo;
+            }
+       
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }

@@ -100,6 +100,8 @@
             // 
             // cbxMarca
             // 
+            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbxMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMarca.FormattingEnabled = true;
             this.cbxMarca.Location = new System.Drawing.Point(139, 139);
@@ -109,6 +111,8 @@
             // 
             // cbxCategoria
             // 
+            this.cbxCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbxCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Location = new System.Drawing.Point(139, 169);
