@@ -61,6 +61,23 @@ namespace Catalogo
             this.Close();
         }
 
+        private bool validarArticulo()
+        {
+            decimal precio;
+            if (!decimal.TryParse(txtPrecio.Text, out precio))
+            {
+                MessageBox.Show("Por favor, ingrese un precio válido");
+                return true;
+            }
+
+            if (precio <= 0)
+            {
+                MessageBox.Show("Por favor, ingrese un precio positivo");
+                return true;
+            }
+            return false;
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             articuloNegocio negocio = new articuloNegocio();
@@ -68,7 +85,9 @@ namespace Catalogo
             try
             {
                 if(articulo == null)
-                    articulo = new articulo(); 
+                    articulo = new articulo();
+                if (validarArticulo())
+                    return;
                 articulo.codigo = txtCodigo.Text;
                 articulo.nombre = txtNombre.Text;    
                 articulo.descripcion = txtDescripcion.Text;
