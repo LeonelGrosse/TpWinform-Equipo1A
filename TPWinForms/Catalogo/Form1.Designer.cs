@@ -98,6 +98,7 @@
             this.btnBorrarArticulo.TabIndex = 5;
             this.btnBorrarArticulo.Text = "Borrar Articulo";
             this.btnBorrarArticulo.UseVisualStyleBackColor = true;
+            this.btnBorrarArticulo.Click += new System.EventHandler(this.btnBorrarArticulo_Click);
             // 
             // btnModificar
             // 

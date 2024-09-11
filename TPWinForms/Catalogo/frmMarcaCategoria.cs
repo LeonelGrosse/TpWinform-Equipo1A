@@ -111,22 +111,25 @@ namespace Catalogo
             {
                 if (marca == true)
                 {
-                    marcaNegocio marcNegocio = new marcaNegocio();
-                    marca select = (marca)dgwMarCat.CurrentRow.DataBoundItem;
-
-                    marcNegocio.eliminar(select.idMarca);
-
-                    MessageBox.Show(" MARCA ELIMINADA ");
+                    DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar esta marca?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if(respuesta == DialogResult.Yes)
+                    {
+                        marcaNegocio marcNegocio = new marcaNegocio();
+                        marca select = (marca)dgwMarCat.CurrentRow.DataBoundItem;
+                        marcNegocio.eliminar(select.idMarca);
+                        MessageBox.Show(" MARCA ELIMINADA ");
+                    }                   
                 }
                 else
                 {
-                    categoriaNegocio catNegocio = new categoriaNegocio();
-                    categoria select = (categoria)dgwMarCat.CurrentRow.DataBoundItem;
-
-                    catNegocio.eliminar(select.idCategoria);
-
-                    MessageBox.Show(" CATEGORIA ELIMINADA ");
-
+                    DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar esta categoria?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if(respuesta == DialogResult.Yes)
+                    {
+                        categoriaNegocio catNegocio = new categoriaNegocio();
+                        categoria select = (categoria)dgwMarCat.CurrentRow.DataBoundItem;
+                        catNegocio.eliminar(select.idCategoria);
+                        MessageBox.Show(" CATEGORIA ELIMINADA ");
+                    }              
                 }
                 cargar() ;
             }

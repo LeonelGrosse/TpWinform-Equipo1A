@@ -89,5 +89,26 @@ namespace Catalogo
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnBorrarArticulo_Click(object sender, EventArgs e)
+        {
+            articuloNegocio negocio = new articuloNegocio();
+            articulo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar este articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.idArticulo);
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
