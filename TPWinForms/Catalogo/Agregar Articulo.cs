@@ -63,10 +63,22 @@ namespace Catalogo
 
         private bool validarArticulo()
         {
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un código de articulo");
+                return true;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un nombre del articulo");
+            }
+
             decimal precio;
+
             if (!decimal.TryParse(txtPrecio.Text, out precio))
             {
-                MessageBox.Show("Por favor, ingrese un precio válido");
+                MessageBox.Show("Por favor, ingrese un precio del artuculo");
                 return true;
             }
 
@@ -75,6 +87,7 @@ namespace Catalogo
                 MessageBox.Show("Por favor, ingrese un precio positivo");
                 return true;
             }
+
             return false;
         }
 
