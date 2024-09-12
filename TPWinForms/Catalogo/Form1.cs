@@ -125,21 +125,7 @@ namespace Catalogo
 
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
-            List<articulo> listaFiltrada;
-            string filtro = txtBusqueda.Text;
-
-            if(filtro != "")
-            {               
-                listaFiltrada = listaArticulo.FindAll(x => x.nombre.ToUpper().Contains(filtro.ToUpper()) || x.marca.nombre.ToUpper().Contains(filtro.ToUpper()) || x.categoria.nombre.ToUpper().Contains(filtro.ToUpper()));
-            }
-            else
-            {               
-                listaFiltrada = listaArticulo;
-            }
-       
-            dgvArticulos.DataSource = null;
-            dgvArticulos.DataSource = listaFiltrada;
-            ocultarColumnas();
+            
         }
 
         private void CargarOrden()
@@ -166,6 +152,25 @@ namespace Catalogo
                     CargarOrden();
                     break;
             }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            List<articulo> listaFiltrada;
+            string filtro = txtBusqueda.Text;
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaArticulo.FindAll(x => x.nombre.ToUpper().Contains(filtro.ToUpper()) || x.marca.nombre.ToUpper().Contains(filtro.ToUpper()) || x.categoria.nombre.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaArticulo;
+            }
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }

@@ -143,6 +143,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(164, 20);
             this.txtBusqueda.TabIndex = 9;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // cbxTipo
             // 
