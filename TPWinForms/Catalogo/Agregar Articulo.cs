@@ -79,7 +79,7 @@ namespace Catalogo
 
             if (!decimal.TryParse(txtPrecio.Text, out precio))
             {
-                MessageBox.Show("Por favor, ingrese un precio del artuculo");
+                MessageBox.Show("Por favor, ingrese un precio del articulo");
                 return true;
             }
 
@@ -125,7 +125,6 @@ namespace Catalogo
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }

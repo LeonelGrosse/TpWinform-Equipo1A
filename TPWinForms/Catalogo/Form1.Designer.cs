@@ -38,6 +38,10 @@
             this.btnBusqueda = new System.Windows.Forms.Button();
             this.lblBusqueda = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.cbxTipo = new System.Windows.Forms.ComboBox();
+            this.lbTipo = new System.Windows.Forms.Label();
+            this.lbOrden = new System.Windows.Forms.Label();
+            this.cbxOrden = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +72,7 @@
             // 
             this.btnCategorias.Location = new System.Drawing.Point(659, 398);
             this.btnCategorias.Name = "btnCategorias";
-            this.btnCategorias.Size = new System.Drawing.Size(144, 53);
+            this.btnCategorias.Size = new System.Drawing.Size(144, 51);
             this.btnCategorias.TabIndex = 2;
             this.btnCategorias.Text = "CATEGORIAS";
             this.btnCategorias.UseVisualStyleBackColor = true;
@@ -115,7 +119,7 @@
             // 
             // btnBusqueda
             // 
-            this.btnBusqueda.Location = new System.Drawing.Point(286, 51);
+            this.btnBusqueda.Location = new System.Drawing.Point(247, 49);
             this.btnBusqueda.Name = "btnBusqueda";
             this.btnBusqueda.Size = new System.Drawing.Size(86, 23);
             this.btnBusqueda.TabIndex = 7;
@@ -127,7 +131,7 @@
             // 
             this.lblBusqueda.AutoSize = true;
             this.lblBusqueda.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusqueda.Location = new System.Drawing.Point(7, 49);
+            this.lblBusqueda.Location = new System.Drawing.Point(8, 50);
             this.lblBusqueda.Name = "lblBusqueda";
             this.lblBusqueda.Size = new System.Drawing.Size(76, 19);
             this.lblBusqueda.TabIndex = 8;
@@ -135,16 +139,63 @@
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(80, 51);
+            this.txtBusqueda.Location = new System.Drawing.Point(77, 51);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(200, 20);
+            this.txtBusqueda.Size = new System.Drawing.Size(164, 20);
             this.txtBusqueda.TabIndex = 9;
+            // 
+            // cbxTipo
+            // 
+            this.cbxTipo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbxTipo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTipo.FormattingEnabled = true;
+            this.cbxTipo.Location = new System.Drawing.Point(512, 48);
+            this.cbxTipo.Name = "cbxTipo";
+            this.cbxTipo.Size = new System.Drawing.Size(121, 21);
+            this.cbxTipo.TabIndex = 10;
+            this.cbxTipo.SelectedIndexChanged += new System.EventHandler(this.cbxCampo_SelectedIndexChanged);
+            // 
+            // lbTipo
+            // 
+            this.lbTipo.AutoSize = true;
+            this.lbTipo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTipo.Location = new System.Drawing.Point(467, 49);
+            this.lbTipo.Name = "lbTipo";
+            this.lbTipo.Size = new System.Drawing.Size(39, 19);
+            this.lbTipo.TabIndex = 11;
+            this.lbTipo.Text = "Tipo:";
+            // 
+            // lbOrden
+            // 
+            this.lbOrden.AutoSize = true;
+            this.lbOrden.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbOrden.Location = new System.Drawing.Point(639, 48);
+            this.lbOrden.Name = "lbOrden";
+            this.lbOrden.Size = new System.Drawing.Size(51, 19);
+            this.lbOrden.TabIndex = 12;
+            this.lbOrden.Text = "Orden:";
+            // 
+            // cbxOrden
+            // 
+            this.cbxOrden.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbxOrden.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxOrden.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxOrden.FormattingEnabled = true;
+            this.cbxOrden.Location = new System.Drawing.Point(696, 48);
+            this.cbxOrden.Name = "cbxOrden";
+            this.cbxOrden.Size = new System.Drawing.Size(121, 21);
+            this.cbxOrden.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 465);
+            this.Controls.Add(this.cbxOrden);
+            this.Controls.Add(this.lbOrden);
+            this.Controls.Add(this.lbTipo);
+            this.Controls.Add(this.cbxTipo);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.lblBusqueda);
             this.Controls.Add(this.btnBusqueda);
@@ -178,6 +229,10 @@
         private System.Windows.Forms.Button btnBusqueda;
         private System.Windows.Forms.Label lblBusqueda;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.ComboBox cbxTipo;
+        private System.Windows.Forms.Label lbTipo;
+        private System.Windows.Forms.Label lbOrden;
+        private System.Windows.Forms.ComboBox cbxOrden;
     }
 }
 

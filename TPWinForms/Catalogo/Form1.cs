@@ -23,6 +23,12 @@ namespace Catalogo
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cbxTipo.Items.Add("Código");
+            cbxTipo.Items.Add("Nombre");
+            cbxTipo.Items.Add("Descripción");
+            cbxTipo.Items.Add("Precio");
+            cbxTipo.Items.Add("Marca");
+            cbxTipo.Items.Add("Categoria");
         }
 
         private void cargar()
@@ -65,7 +71,6 @@ namespace Catalogo
             }
             catch (Exception ex)
             {
-
                 pbxImagen.Load("https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg");  //Al no tener imagen el articulo, se carga esta imagen por defecto
             }
         }
@@ -136,6 +141,32 @@ namespace Catalogo
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void CargarOrden()
+        {
+            cbxOrden.Items.Clear();
+            cbxOrden.Items.Add("Mayor a");
+            cbxOrden.Items.Add("Menor a");
+            cbxOrden.Items.Add("Igual a");
+            cbxOrden.Items.Add("Comienza con");
+            cbxOrden.Items.Add("Termina con");
+            cbxOrden.Items.Add("Contiene");
+        }
+        private void cbxCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbxTipo.SelectedItem.ToString();
+            switch (opcion)
+            {
+                case "Código":
+                case "Nombre":
+                case "Descripción":
+                case "Precio":
+                case "Marca":
+                case "Categoria":
+                    CargarOrden();
+                    break;
+            }
         }
     }
 }
