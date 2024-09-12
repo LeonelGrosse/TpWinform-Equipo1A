@@ -43,7 +43,6 @@ namespace Catalogo
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -69,7 +68,7 @@ namespace Catalogo
             {
                 pbxImagen.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception)                                      //Le saque la variable ex ya que no se usa y generaba un warning
             {
                 pbxImagen.Load("https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg");  //Al no tener imagen el articulo, se carga esta imagen por defecto
             }
