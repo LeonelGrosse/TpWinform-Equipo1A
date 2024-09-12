@@ -72,6 +72,7 @@ namespace Catalogo
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 MessageBox.Show("Por favor, ingrese un nombre del articulo");
+                return true;
             }
 
             decimal precio;
