@@ -119,6 +119,28 @@ namespace negocio
             }
         }
 
+        public void modificarImagen(articulo art)
+        {
+            accesoDatos datos =new accesoDatos();
+            try
+            {
+                datos.setConsulta("Insert into IMAGENES values (@idArticulo, @urlImagen)");
+                datos.setParametro("@idArticulo", art.idArticulo);
+                datos.setParametro("@urlImagen", art.imagen.urlImagen);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void eliminar(int id)
         {
             try

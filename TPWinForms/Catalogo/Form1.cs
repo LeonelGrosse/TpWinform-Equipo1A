@@ -122,12 +122,6 @@ namespace Catalogo
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        private void btnBusqueda_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void CargarOrden()
         {
             cbxOrden.Items.Clear();
@@ -171,6 +165,14 @@ namespace Catalogo
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            articulo seleccionado;
+            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmAgregarImagen modificar = new frmAgregarImagen(seleccionado);
+            modificar.ShowDialog();
+            cargar();
         }
     }
 }
