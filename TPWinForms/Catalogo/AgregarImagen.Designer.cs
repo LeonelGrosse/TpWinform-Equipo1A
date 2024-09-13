@@ -221,6 +221,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "frmAgregarImagen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Imagen";
             this.Load += new System.EventHandler(this.frmAgregarImagen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxAgregarImagen)).EndInit();

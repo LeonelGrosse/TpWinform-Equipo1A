@@ -75,6 +75,18 @@ namespace Catalogo
             }
         }
 
+        private void cargarImagen2(string imagen)
+        {
+            try
+            {
+                pbxImagen2.Load(imagen);
+            }
+            catch (Exception)                                    
+            {
+                pbxImagen2.Load("https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg");  
+            }
+        }
+
         private void btnMarcas_Click(object sender, EventArgs e)
         {
             frmMarcaCategoria marca = new frmMarcaCategoria(true); // al manar el TRUE, se inica que se quiere ver MARCAS
@@ -271,6 +283,37 @@ namespace Catalogo
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void btnSiguienteImagen_Click(object sender, EventArgs e)
+        {
+            articulo seleccionado;
+            seleccionado=(articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            int contador = 0;
+            
+            foreach (articulo art in listaArticulo)
+            { 
+                if(art.idArticulo == seleccionado.idArticulo)
+                {
+                    if (art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == true)
+                    {
+                        cargarImagen2(art.imagen.urlImagen);
+                        pbxImagen2.Visible = true;
+                        pbxImagen.Visible = false;
+                        contador++;
+                    }
+                    else if(art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == false)
+                    {
+                        cargarImagen(art.imagen.urlImagen);
+                        pbxImagen2.Visible = false;
+                        pbxImagen.Visible = true;
+                        contador++;
+                    }
+                }
+            }
+            if (contador == 0)
+                MessageBox.Show("No hay mas imagenes");
         }
     }
 }

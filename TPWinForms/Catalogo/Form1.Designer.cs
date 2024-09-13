@@ -42,11 +42,12 @@
             this.lbOrden = new System.Windows.Forms.Label();
             this.cbxOrden = new System.Windows.Forms.ComboBox();
             this.btnSiguienteImagen = new System.Windows.Forms.Button();
-            this.btnAnteriorImagen = new System.Windows.Forms.Button();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.btnFiltro = new System.Windows.Forms.Button();
+            this.pbxImagen2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagen2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -145,7 +146,7 @@
             this.cbxTipo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipo.FormattingEnabled = true;
-            this.cbxTipo.Location = new System.Drawing.Point(512, 16);
+            this.cbxTipo.Location = new System.Drawing.Point(362, 17);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(121, 21);
             this.cbxTipo.TabIndex = 10;
@@ -155,7 +156,7 @@
             // 
             this.lbTipo.AutoSize = true;
             this.lbTipo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTipo.Location = new System.Drawing.Point(467, 17);
+            this.lbTipo.Location = new System.Drawing.Point(317, 18);
             this.lbTipo.Name = "lbTipo";
             this.lbTipo.Size = new System.Drawing.Size(39, 19);
             this.lbTipo.TabIndex = 11;
@@ -165,7 +166,7 @@
             // 
             this.lbOrden.AutoSize = true;
             this.lbOrden.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOrden.Location = new System.Drawing.Point(639, 16);
+            this.lbOrden.Location = new System.Drawing.Point(489, 17);
             this.lbOrden.Name = "lbOrden";
             this.lbOrden.Size = new System.Drawing.Size(51, 19);
             this.lbOrden.TabIndex = 12;
@@ -177,28 +178,20 @@
             this.cbxOrden.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxOrden.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxOrden.FormattingEnabled = true;
-            this.cbxOrden.Location = new System.Drawing.Point(696, 16);
+            this.cbxOrden.Location = new System.Drawing.Point(546, 17);
             this.cbxOrden.Name = "cbxOrden";
             this.cbxOrden.Size = new System.Drawing.Size(121, 21);
             this.cbxOrden.TabIndex = 13;
             // 
             // btnSiguienteImagen
             // 
-            this.btnSiguienteImagen.Location = new System.Drawing.Point(1111, 366);
+            this.btnSiguienteImagen.Location = new System.Drawing.Point(1053, 366);
             this.btnSiguienteImagen.Name = "btnSiguienteImagen";
-            this.btnSiguienteImagen.Size = new System.Drawing.Size(91, 33);
+            this.btnSiguienteImagen.Size = new System.Drawing.Size(103, 33);
             this.btnSiguienteImagen.TabIndex = 14;
-            this.btnSiguienteImagen.Text = "-->";
+            this.btnSiguienteImagen.Text = "Siguiente imagen";
             this.btnSiguienteImagen.UseVisualStyleBackColor = true;
-            // 
-            // btnAnteriorImagen
-            // 
-            this.btnAnteriorImagen.Location = new System.Drawing.Point(1019, 366);
-            this.btnAnteriorImagen.Name = "btnAnteriorImagen";
-            this.btnAnteriorImagen.Size = new System.Drawing.Size(86, 33);
-            this.btnAnteriorImagen.TabIndex = 15;
-            this.btnAnteriorImagen.Text = "<--";
-            this.btnAnteriorImagen.UseVisualStyleBackColor = true;
+            this.btnSiguienteImagen.Click += new System.EventHandler(this.btnSiguienteImagen_Click);
             // 
             // btnAgregarImagen
             // 
@@ -212,13 +205,23 @@
             // 
             // btnFiltro
             // 
-            this.btnFiltro.Location = new System.Drawing.Point(265, 19);
+            this.btnFiltro.Location = new System.Drawing.Point(693, 17);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(109, 21);
             this.btnFiltro.TabIndex = 17;
             this.btnFiltro.Text = "Filtrar";
             this.btnFiltro.UseVisualStyleBackColor = true;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
+            // pbxImagen2
+            // 
+            this.pbxImagen2.Location = new System.Drawing.Point(839, 49);
+            this.pbxImagen2.Name = "pbxImagen2";
+            this.pbxImagen2.Size = new System.Drawing.Size(363, 297);
+            this.pbxImagen2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxImagen2.TabIndex = 18;
+            this.pbxImagen2.TabStop = false;
+            this.pbxImagen2.Visible = false;
             // 
             // Form1
             // 
@@ -228,7 +231,6 @@
             this.ClientSize = new System.Drawing.Size(1232, 430);
             this.Controls.Add(this.btnFiltro);
             this.Controls.Add(this.btnAgregarImagen);
-            this.Controls.Add(this.btnAnteriorImagen);
             this.Controls.Add(this.btnSiguienteImagen);
             this.Controls.Add(this.cbxOrden);
             this.Controls.Add(this.lbOrden);
@@ -243,6 +245,7 @@
             this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.btnMarcas);
             this.Controls.Add(this.dgvArticulos);
+            this.Controls.Add(this.pbxImagen2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -251,6 +254,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagen2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,9 +276,9 @@
         private System.Windows.Forms.Label lbOrden;
         private System.Windows.Forms.ComboBox cbxOrden;
         private System.Windows.Forms.Button btnSiguienteImagen;
-        private System.Windows.Forms.Button btnAnteriorImagen;
         private System.Windows.Forms.Button btnAgregarImagen;
         private System.Windows.Forms.Button btnFiltro;
+        private System.Windows.Forms.PictureBox pbxImagen2;
     }
 }
 
