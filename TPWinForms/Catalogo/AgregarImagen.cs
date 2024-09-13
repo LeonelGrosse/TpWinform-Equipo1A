@@ -66,17 +66,24 @@ namespace Catalogo
         {
             articuloNegocio negocio = new articuloNegocio();
 
-            try
+            if (!string.IsNullOrWhiteSpace(txtUrlImagen.Text))
             {
-                negocio.modificarImagen(articulo);
-                MessageBox.Show("Agregado exitosamente");
+                try
+                {
+                    negocio.modificarImagen(articulo);
+                    MessageBox.Show("Agregado exitosamente");
 
-                Close();
+                    Close();
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.ToString());
+                }    
             }
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Por favor, ingrese una Url");
             }
         }
 
