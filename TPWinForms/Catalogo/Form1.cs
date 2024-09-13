@@ -20,15 +20,16 @@ namespace Catalogo
             InitializeComponent();
         }
 
+        private void CargarOrdenForm()
+        {
+            cbxTipo.Items.Add("Código");
+            cbxTipo.Items.Add("Nombre");
+            cbxTipo.Items.Add("Precio");
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
-            cbxTipo.Items.Add("Código");
-            cbxTipo.Items.Add("Nombre");
-            cbxTipo.Items.Add("Descripción");
-            cbxTipo.Items.Add("Precio");
-            cbxTipo.Items.Add("Marca");
-            cbxTipo.Items.Add("Categoria");
+            CargarOrdenForm();
         }
 
         private void cargar()
@@ -139,10 +140,7 @@ namespace Catalogo
             {
                 case "Código":
                 case "Nombre":
-                case "Descripción":
                 case "Precio":
-                case "Marca":
-                case "Categoria":
                     CargarOrden();
                     break;
             }
@@ -173,6 +171,106 @@ namespace Catalogo
             frmAgregarImagen modificar = new frmAgregarImagen(seleccionado);
             modificar.ShowDialog();
             cargar();
+        }
+
+        public List<articulo> filtrarLista(string tipo, string orden, string filtro)
+        {
+            List<articulo> lista = new List<articulo>();
+            accesoDatos datos = new accesoDatos();
+            try
+            {
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id marcID, M.Descripcion marcDesc, C.Id catID, C.Descripcion catDesc, Precio, I.Id imgID, I.ImagenUrl imgUrl FROM Articulos A " +
+                          "JOIN Marcas M ON A.MarcaId = M.Id " +
+                          "JOIN Categorias C ON A.CategoriaId = C.Id " +
+                          "LEFT JOIN Imagenes I ON A.Id = I.ArticuloId WHERE P.Activo = 1 AND ";
+                switch (tipo)
+                {
+                    case "Comienza con":
+                        consulta += "Código like '" + filtro + "%' ";
+                        break;
+                    case "Termina con":
+                        consulta += "Código like '%" + filtro + "'";
+                        break;
+                    default:
+                        consulta += "Código like '%" + filtro + "%'";
+                        break;   
+                }
+                switch (tipo)
+                {
+                    case "Comienza con":
+                        consulta += "Nombre like '" + filtro + "%' ";
+                        break;
+                    case "Termina con":
+                        consulta += "Nombre like '%" + filtro + "'";
+                        break;
+                    default:
+                        consulta += "Nombre like '%" + filtro + "%'";
+                        break;
+                }
+                switch (tipo)
+                {
+                    case "Mayor a":
+                        consulta += "Precio > " + filtro;
+                        break;
+                    case "Menor a":
+                        consulta += "Precio < " + filtro;
+                        break;
+                    case "Igual a":
+                        consulta += "Precio = " + filtro;
+                        break;
+                }
+                datos.setConsulta(consulta);
+                datos.ejecutarLectura();
+                
+                while (datos.Lector.Read())
+                {
+                    articulo aux = new articulo();
+                    aux.idArticulo = (int)datos.Lector["Id"];
+                    aux.codigo = (string)datos.Lector["Codigo"];
+                    aux.nombre = (string)datos.Lector["Nombre"];
+                    aux.descripcion = (string)datos.Lector["Descripcion"];
+                    aux.precio = (decimal)datos.Lector["Precio"];
+
+                    aux.marca = new marca();
+                    aux.marca.idMarca = (int)datos.Lector["marcID"];
+                    aux.marca.nombre = (string)datos.Lector["marcDesc"];
+
+                    aux.categoria = new categoria();
+                    aux.categoria.idCategoria = (int)datos.Lector["catID"];
+                    aux.categoria.nombre = (string)datos.Lector["catDesc"];
+
+                    aux.imagen = new imagen();
+                    if (!(datos.Lector["imgID"] is DBNull))
+                    {
+                        aux.imagen.idImagen = (int)datos.Lector["imgID"];
+                        aux.imagen.urlImagen = (string)datos.Lector["imgUrl"];
+                    }
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            articulo art = new articulo();
+
+            try
+            {            
+                string tipo = cbxTipo.SelectedItem.ToString();
+                string orden = cbxOrden.SelectedItem.ToString();
+                string filtro = txtBusqueda.Text;
+                dgvArticulos.DataSource = filtrarLista(tipo, orden, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

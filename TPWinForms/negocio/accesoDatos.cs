@@ -9,7 +9,7 @@ using System.Net;
 
 namespace negocio
 {
-    internal class accesoDatos
+    public class accesoDatos
     {
         private SqlConnection conexion;         //establece al coneccion
         private SqlCommand comando;             //para realizar las acciones
@@ -57,6 +57,24 @@ namespace negocio
                 throw ex;
             }
         }
+
+        public int ejecutarEscalar()
+        {
+            try
+            {
+                conexion.Open();
+                return (int)comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
 
         public void setParametro(string nombre, object valor)
         {

@@ -44,6 +44,7 @@
             this.btnSiguienteImagen = new System.Windows.Forms.Button();
             this.btnAnteriorImagen = new System.Windows.Forms.Button();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
+            this.btnFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
@@ -209,12 +210,23 @@
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
+            // btnFiltro
+            // 
+            this.btnFiltro.Location = new System.Drawing.Point(265, 19);
+            this.btnFiltro.Name = "btnFiltro";
+            this.btnFiltro.Size = new System.Drawing.Size(109, 21);
+            this.btnFiltro.TabIndex = 17;
+            this.btnFiltro.Text = "Filtrar";
+            this.btnFiltro.UseVisualStyleBackColor = true;
+            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1232, 430);
+            this.Controls.Add(this.btnFiltro);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.btnAnteriorImagen);
             this.Controls.Add(this.btnSiguienteImagen);
@@ -262,6 +274,7 @@
         private System.Windows.Forms.Button btnSiguienteImagen;
         private System.Windows.Forms.Button btnAnteriorImagen;
         private System.Windows.Forms.Button btnAgregarImagen;
+        private System.Windows.Forms.Button btnFiltro;
     }
 }
 
