@@ -68,7 +68,7 @@
             this.btnMarcas.Location = new System.Drawing.Point(527, 366);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(140, 51);
-            this.btnMarcas.TabIndex = 1;
+            this.btnMarcas.TabIndex = 7;
             this.btnMarcas.Text = "MARCAS";
             this.btnMarcas.UseVisualStyleBackColor = true;
             this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
@@ -78,7 +78,7 @@
             this.btnCategorias.Location = new System.Drawing.Point(673, 366);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(144, 51);
-            this.btnCategorias.TabIndex = 2;
+            this.btnCategorias.TabIndex = 8;
             this.btnCategorias.Text = "CATEGORIAS";
             this.btnCategorias.UseVisualStyleBackColor = true;
             this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
@@ -107,7 +107,7 @@
             this.btnBorrarArticulo.Location = new System.Drawing.Point(305, 366);
             this.btnBorrarArticulo.Name = "btnBorrarArticulo";
             this.btnBorrarArticulo.Size = new System.Drawing.Size(153, 51);
-            this.btnBorrarArticulo.TabIndex = 5;
+            this.btnBorrarArticulo.TabIndex = 6;
             this.btnBorrarArticulo.Text = "Borrar Articulo";
             this.btnBorrarArticulo.UseVisualStyleBackColor = true;
             this.btnBorrarArticulo.Click += new System.EventHandler(this.btnBorrarArticulo_Click);
@@ -117,7 +117,7 @@
             this.btnModificar.Location = new System.Drawing.Point(158, 366);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(141, 51);
-            this.btnModificar.TabIndex = 6;
+            this.btnModificar.TabIndex = 5;
             this.btnModificar.Text = "Modificar Articulo";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -137,7 +137,7 @@
             this.txtBusqueda.Location = new System.Drawing.Point(77, 19);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(164, 20);
-            this.txtBusqueda.TabIndex = 9;
+            this.txtBusqueda.TabIndex = 0;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // cbxTipo
@@ -149,7 +149,7 @@
             this.cbxTipo.Location = new System.Drawing.Point(362, 17);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(121, 21);
-            this.cbxTipo.TabIndex = 10;
+            this.cbxTipo.TabIndex = 1;
             this.cbxTipo.SelectedIndexChanged += new System.EventHandler(this.cbxCampo_SelectedIndexChanged);
             // 
             // lbTipo
@@ -181,14 +181,14 @@
             this.cbxOrden.Location = new System.Drawing.Point(546, 17);
             this.cbxOrden.Name = "cbxOrden";
             this.cbxOrden.Size = new System.Drawing.Size(121, 21);
-            this.cbxOrden.TabIndex = 13;
+            this.cbxOrden.TabIndex = 2;
             // 
             // btnSiguienteImagen
             // 
             this.btnSiguienteImagen.Location = new System.Drawing.Point(1053, 366);
             this.btnSiguienteImagen.Name = "btnSiguienteImagen";
             this.btnSiguienteImagen.Size = new System.Drawing.Size(103, 33);
-            this.btnSiguienteImagen.TabIndex = 14;
+            this.btnSiguienteImagen.TabIndex = 10;
             this.btnSiguienteImagen.Text = "Siguiente imagen";
             this.btnSiguienteImagen.UseVisualStyleBackColor = true;
             this.btnSiguienteImagen.Click += new System.EventHandler(this.btnSiguienteImagen_Click);
@@ -198,7 +198,7 @@
             this.btnAgregarImagen.Location = new System.Drawing.Point(839, 366);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(128, 33);
-            this.btnAgregarImagen.TabIndex = 16;
+            this.btnAgregarImagen.TabIndex = 9;
             this.btnAgregarImagen.Text = "Agregar Imagen";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
@@ -208,7 +208,7 @@
             this.btnFiltro.Location = new System.Drawing.Point(693, 17);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(109, 21);
-            this.btnFiltro.TabIndex = 17;
+            this.btnFiltro.TabIndex = 3;
             this.btnFiltro.Text = "Filtrar";
             this.btnFiltro.UseVisualStyleBackColor = true;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);

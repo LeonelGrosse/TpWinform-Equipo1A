@@ -157,7 +157,7 @@
             this.txtUrlImagen.Location = new System.Drawing.Point(254, 83);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(193, 20);
-            this.txtUrlImagen.TabIndex = 22;
+            this.txtUrlImagen.TabIndex = 0;
             this.txtUrlImagen.Leave += new System.EventHandler(this.txtUrlImagen_Leave);
             // 
             // btnAgregarImagen
@@ -165,7 +165,7 @@
             this.btnAgregarImagen.Location = new System.Drawing.Point(266, 130);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregarImagen.TabIndex = 23;
+            this.btnAgregarImagen.TabIndex = 1;
             this.btnAgregarImagen.Text = "Agregar";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
@@ -175,7 +175,7 @@
             this.btnCancelarImagen.Location = new System.Drawing.Point(372, 130);
             this.btnCancelarImagen.Name = "btnCancelarImagen";
             this.btnCancelarImagen.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarImagen.TabIndex = 24;
+            this.btnCancelarImagen.TabIndex = 2;
             this.btnCancelarImagen.Text = "Cancelar";
             this.btnCancelarImagen.UseVisualStyleBackColor = true;
             this.btnCancelarImagen.Click += new System.EventHandler(this.btnCancelarImagen_Click);

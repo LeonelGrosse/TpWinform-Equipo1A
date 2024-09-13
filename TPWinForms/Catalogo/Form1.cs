@@ -109,10 +109,23 @@ namespace Catalogo
         private void btnModificar_Click(object sender, EventArgs e)
         {
             articulo seleccionado;
-            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+            try
+            {
+                if (dgvArticulos.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay articulos para modificar");
+                    return;
+                }
+                seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnBorrarArticulo_Click(object sender, EventArgs e)
@@ -121,6 +134,11 @@ namespace Catalogo
             articulo seleccionado;
             try
             {
+                if (dgvArticulos.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay articulos para eliminar");
+                    return;
+                }
                 DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar este articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
