@@ -29,8 +29,22 @@ namespace Catalogo
         {
             cargar();
         }
+        private void ocultarColumna() 
+        {
+            if (marca == true)
+            {
+                dgwMarCat.Columns["idMarca"].Visible = false;
+            }
+            else
+            {
+                dgwMarCat.Columns["idCategoria"].Visible = false;
+            }
+        }
+
         private void cargar()
         {
+            txtNombre.Text = "";
+
             if (marca == true)
             {
                 marcaNegocio marcaNegocio = new marcaNegocio();
@@ -39,6 +53,7 @@ namespace Catalogo
                 {
                     marcaLista = marcaNegocio.listar();
                     dgwMarCat.DataSource = marcaLista;
+                    ocultarColumna();
 
                     this.Text = " MARCA ";
                 }
@@ -55,6 +70,7 @@ namespace Catalogo
                 {
                     categoriaLista = categoriaNegocio.listar();
                     dgwMarCat.DataSource = categoriaLista;
+                    ocultarColumna();
 
                     this.Text = " CATEGORIA ";
                 }
@@ -112,26 +128,26 @@ namespace Catalogo
                 if (marca == true)
                 {
                     DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar esta marca?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if(respuesta == DialogResult.Yes)
+                    if (respuesta == DialogResult.Yes)
                     {
                         marcaNegocio marcNegocio = new marcaNegocio();
                         marca select = (marca)dgwMarCat.CurrentRow.DataBoundItem;
                         marcNegocio.eliminar(select.idMarca);
                         MessageBox.Show(" MARCA ELIMINADA ");
-                    }                   
+                    }
                 }
                 else
                 {
                     DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar esta categoria?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if(respuesta == DialogResult.Yes)
+                    if (respuesta == DialogResult.Yes)
                     {
                         categoriaNegocio catNegocio = new categoriaNegocio();
                         categoria select = (categoria)dgwMarCat.CurrentRow.DataBoundItem;
                         catNegocio.eliminar(select.idCategoria);
                         MessageBox.Show(" CATEGORIA ELIMINADA ");
-                    }              
+                    }
                 }
-                cargar() ;
+                cargar();
             }
             catch (Exception ex)
             {

@@ -91,12 +91,14 @@ namespace Catalogo
         {
             frmMarcaCategoria marca = new frmMarcaCategoria(true); // al manar el TRUE, se inica que se quiere ver MARCAS
             marca.ShowDialog();
+            cargar();
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             frmMarcaCategoria categorias = new frmMarcaCategoria(false); // al manar el FALSE, se inica que se quiere ver CATEGORIAS
             categorias.ShowDialog();
+            cargar();
         }
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
