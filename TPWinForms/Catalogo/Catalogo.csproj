@@ -70,6 +70,12 @@
     <Compile Include="frmMarcaCategoria.Designer.cs">
       <DependentUpon>frmMarcaCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVerDetallesArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVerDetallesArticulo.Designer.cs">
+      <DependentUpon>frmVerDetallesArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMarcaCategoria.resx">
       <DependentUpon>frmMarcaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVerDetallesArticulo.resx">
+      <DependentUpon>frmVerDetallesArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -87,20 +87,6 @@ namespace Catalogo
             }
         }
 
-        private void btnMarcas_Click(object sender, EventArgs e)
-        {
-            frmMarcaCategoria marca = new frmMarcaCategoria(true); // al manar el TRUE, se inica que se quiere ver MARCAS
-            marca.ShowDialog();
-            cargar();
-        }
-
-        private void btnCategorias_Click(object sender, EventArgs e)
-        {
-            frmMarcaCategoria categorias = new frmMarcaCategoria(false); // al manar el FALSE, se inica que se quiere ver CATEGORIAS
-            categorias.ShowDialog();
-            cargar();
-        }
-
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
             frmAgregarArticulo alta = new frmAgregarArticulo();
@@ -118,9 +104,11 @@ namespace Catalogo
                     MessageBox.Show("No hay articulos para modificar");
                     return;
                 }
+                cargar();
                 seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
                 frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
                 modificar.ShowDialog();
+
                 cargar();
             }
             catch (Exception ex)
@@ -144,10 +132,11 @@ namespace Catalogo
                 DialogResult respuesta = MessageBox.Show("Estas seguro que queres eliminar este articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    negocio.eliminar(seleccionado.idArticulo);
                     cargar();
+                    seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.idArticulo);                
                 }
+                cargar();
             }
             catch (Exception ex)
             {
@@ -334,6 +323,29 @@ namespace Catalogo
             }
             if (contador == 0)
                 MessageBox.Show("No hay mas imagenes");
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMarcaCategoria categorias = new frmMarcaCategoria(false); // al manar el FALSE, se inica que se quiere ver CATEGORIAS
+            categorias.ShowDialog();
+            cargar();
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMarcaCategoria marca = new frmMarcaCategoria(true); // al manar el TRUE, se inica que se quiere ver MARCAS
+            marca.ShowDialog();
+            cargar();
+        }
+
+        private void btnVerDetalles_Click(object sender, EventArgs e)
+        {
+            cargar();
+            articulo seleccionado;
+            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmVerDetallesArticulo detalles = new frmVerDetallesArticulo(seleccionado);
+            detalles.ShowDialog();
         }
     }
 }
