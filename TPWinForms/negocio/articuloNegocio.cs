@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using dominio;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace negocio
 {
@@ -15,10 +17,14 @@ namespace negocio
 
         public List<articulo> listar()
         {
-            //string consutla = "Select id, Codigo, Nombre, Descripcion, Precio, idMarca, IdCategoria from ARTICULOS";
+            /*
 
             string select = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id marcID, M.Descripcion marcDesc, C.Id catID, C.Descripcion catDesc, Precio, I.Id imgID, I.ImagenUrl imgUrl";
             string from = " FROM ARTICULOS A INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES AS I ON I.IdArticulo = A.Id";
+            */
+
+            string select = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id marcID, M.Descripcion marcDesc, C.Id catID, C.Descripcion catDesc, Precio, MAX(I.Id) AS imgID, MAX(I.ImagenUrl) AS imgUrl "; 
+            string from = "FROM ARTICULOS A INNER JOIN MARCAS M ON A.IdMarca = M.Id INNER JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id GROUP BY A.Id, Codigo, Nombre, A.Descripcion, M.Id, M.Descripcion, C.Id, C.Descripcion, Precio; ";
 
             try
             {
