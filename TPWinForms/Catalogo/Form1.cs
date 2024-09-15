@@ -190,11 +190,18 @@ namespace Catalogo
         }
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            articulo seleccionado;
-            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAgregarImagen modificar = new frmAgregarImagen(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+            if(dgvArticulos.CurrentRow != null)
+            {
+                articulo seleccionado;
+                seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmAgregarImagen modificar = new frmAgregarImagen(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un artículo en la lista.");
+            }
         }
 
         public List<articulo> filtrarLista(string tipo, string orden, string filtro)

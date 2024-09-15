@@ -127,7 +127,13 @@ namespace negocio
 
         public void modificarImagen(articulo art)
         {
+            /*if (art == null || art.imagen == null)
+            {
+                throw new ArgumentNullException("La imagen no pueden ser null.");
+            }*/
+
             accesoDatos datos =new accesoDatos();
+
             try
             {
                 datos.setConsulta("Insert into IMAGENES values (@idArticulo, @urlImagen)");
