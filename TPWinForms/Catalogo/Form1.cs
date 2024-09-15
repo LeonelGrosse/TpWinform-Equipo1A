@@ -305,11 +305,25 @@ namespace Catalogo
                 string tipo = cbxTipo.SelectedItem != null ? cbxTipo.SelectedItem.ToString() : string.Empty;
                 string orden = cbxOrden.SelectedItem != null ? cbxOrden.SelectedItem.ToString() : string.Empty;
                 string filtro = txtBusqueda.Text.Trim();
+
+                if (string.IsNullOrEmpty(tipo))
+                {
+                    MessageBox.Show("Por favor, seleccione un tipo.");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(orden))
+                {
+                    MessageBox.Show("Por favor, seleccione un orden.");
+                    return;
+                }
+
                 if (string.IsNullOrEmpty(filtro))
                 {
                     MessageBox.Show("Por favor, ingrese un filtro de búsqueda.");
                     return;
                 }
+
                 dgvArticulos.DataSource = filtrarLista(tipo, orden, filtro);
             }
             catch (Exception ex)
