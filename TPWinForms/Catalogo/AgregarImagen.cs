@@ -64,13 +64,15 @@ namespace Catalogo
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            articuloNegocio negocio = new articuloNegocio();
+            //articuloNegocio negocio = new articuloNegocio();
+            imagenNegocio negocio = new imagenNegocio();
 
             if (!string.IsNullOrWhiteSpace(txtUrlImagen.Text))
             {
                 try
                 {
-                    negocio.modificarImagen(articulo);
+                    articulo.imagen.urlImagen = txtUrlImagen.Text;
+                    negocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente");
 
                     Close();

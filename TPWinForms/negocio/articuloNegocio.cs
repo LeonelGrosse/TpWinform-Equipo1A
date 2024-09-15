@@ -125,33 +125,28 @@ namespace negocio
             }
         }
 
-        public void modificarImagen(articulo art)
-        {
-            /*if (art == null || art.imagen == null)
-            {
-                throw new ArgumentNullException("La imagen no pueden ser null.");
-            }*/
-
-            accesoDatos datos =new accesoDatos();
-
-            try
-            {
-                datos.setConsulta("Insert into IMAGENES values (@idArticulo, @urlImagen)");
-                datos.setParametro("@idArticulo", art.idArticulo);
-                datos.setParametro("@urlImagen", art.imagen.urlImagen);
-
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
+        //public void modificarImagen(articulo art)
+        //{
+        //    accesoDatos datos =new accesoDatos();
+        //
+        //    try
+        //    {
+        //        datos.setConsulta("Insert into IMAGENES values (@idArticulo, @urlImagen)");
+        //        datos.setParametro("@idArticulo", art.idArticulo);
+        //        datos.setParametro("@urlImagen", art.imagen.urlImagen);
+        //
+        //        datos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
 
         public void eliminar(int id)
         {
