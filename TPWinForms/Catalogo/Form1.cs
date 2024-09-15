@@ -14,22 +14,16 @@ namespace Catalogo
 {
     public partial class Form1 : Form
     {
-        private List<articulo> listaArticulo; 
+        private List<articulo> listaArticulo;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void CargarOrdenForm()
-        {
-            cbxTipo.Items.Add("Código");
-            cbxTipo.Items.Add("Nombre");
-            cbxTipo.Items.Add("Precio");
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
-            CargarOrdenForm();
+            CargarOrdenDentroForm1_Load();
         }
 
         private void cargar()
@@ -56,9 +50,9 @@ namespace Catalogo
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)                 //Cambia la imagen del articulo al moverse por la tabla
         {
-            if(dgvArticulos.CurrentRow != null)
+            if (dgvArticulos.CurrentRow != null)
             {
-                articulo seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;        
+                articulo seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
                 cargarImagen(seleccionado.imagen.urlImagen);
             }
         }
@@ -81,9 +75,9 @@ namespace Catalogo
             {
                 pbxImagen2.Load(imagen);
             }
-            catch (Exception)                                    
+            catch (Exception)
             {
-                pbxImagen2.Load("https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg");  
+                pbxImagen2.Load("https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg");
             }
         }
 
@@ -134,7 +128,7 @@ namespace Catalogo
                 {
                     cargar();
                     seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    negocio.eliminar(seleccionado.idArticulo);                
+                    negocio.eliminar(seleccionado.idArticulo);
                 }
                 cargar();
             }
@@ -144,25 +138,34 @@ namespace Catalogo
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void CargarOrden()
+        private void CargarOrdenDentroForm1_Load()
         {
-            cbxOrden.Items.Clear();
-            cbxOrden.Items.Add("Mayor a");
-            cbxOrden.Items.Add("Menor a");
-            cbxOrden.Items.Add("Igual a");
-            cbxOrden.Items.Add("Comienza con");
-            cbxOrden.Items.Add("Termina con");
-            cbxOrden.Items.Add("Contiene");
+            cbxTipo.Items.Add("Código");
+            cbxTipo.Items.Add("Nombre");
+            cbxTipo.Items.Add("Precio");
         }
+        
         private void cbxCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(cbxTipo.SelectedItem == null) return;
             string opcion = cbxTipo.SelectedItem.ToString();
+            cbxOrden.Items.Clear();
             switch (opcion)
             {
                 case "Código":
+                    cbxOrden.Items.Add("Comienza con");
+                    cbxOrden.Items.Add("Termina con");
+                    cbxOrden.Items.Add("Contiene");
+                    break;
                 case "Nombre":
+                    cbxOrden.Items.Add("Comienza con");
+                    cbxOrden.Items.Add("Termina con");
+                    cbxOrden.Items.Add("Contiene");
+                    break;
                 case "Precio":
-                    CargarOrden();
+                    cbxOrden.Items.Add("Mayor a");
+                    cbxOrden.Items.Add("Menor a");
+                    cbxOrden.Items.Add("Igual a");
                     break;
             }
         }
@@ -200,49 +203,65 @@ namespace Catalogo
             accesoDatos datos = new accesoDatos();
             try
             {
-                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Id marcID, M.Descripcion marcDesc, C.Id catID, C.Descripcion catDesc, Precio, I.Id imgID, I.ImagenUrl imgUrl FROM Articulos A " +
-                          "JOIN Marcas M ON A.MarcaId = M.Id " +
-                          "JOIN Categorias C ON A.CategoriaId = C.Id " +
-                          "LEFT JOIN Imagenes I ON A.Id = I.ArticuloId WHERE P.Activo = 1 AND ";
-                switch (tipo)
+                string consulta = "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion AS marcDesc, C.Id AS catID, C.Descripcion AS catDesc, A.Precio, I.Id AS imgID, I.ImagenUrl AS imgUrl FROM Articulos A " +
+                                  "JOIN Marcas M ON A.IdMarca = M.Id " +
+                                  "JOIN Categorias C ON A.IdCategoria = C.Id " +
+                                  "LEFT JOIN Imagenes I ON A.Id = I.IdArticulo";
+
+                if (!string.IsNullOrEmpty(tipo) && !string.IsNullOrEmpty(orden) && !string.IsNullOrEmpty(filtro))
                 {
-                    case "Comienza con":
-                        consulta += "Código like '" + filtro + "%' ";
-                        break;
-                    case "Termina con":
-                        consulta += "Código like '%" + filtro + "'";
-                        break;
-                    default:
-                        consulta += "Código like '%" + filtro + "%'";
-                        break;   
+                    consulta += " WHERE ";
+                    switch (tipo)
+                    {
+                        case "Código":
+                            switch (orden)
+                            {
+                                case "Comienza con":
+                                    consulta += "A.Codigo LIKE @filtro + '%' ";
+                                    break;
+                                case "Termina con":
+                                    consulta += "A.Codigo LIKE '%' + @filtro";
+                                    break;
+                                case "Contiene":
+                                    consulta += "A.Codigo LIKE '%' + @filtro + '%'";
+                                    break;
+                            }
+                            break;
+                        case "Nombre":
+                            switch (orden)
+                            {
+                                case "Comienza con":
+                                    consulta += "A.Nombre LIKE @filtro + '%' ";
+                                    break;
+                                case "Termina con":
+                                    consulta += "A.Nombre LIKE '%' + @filtro";
+                                    break;
+                                case "Contiene":
+                                    consulta += "A.Nombre LIKE '%' + @filtro + '%'";
+                                    break;
+                            }
+                            break;
+                        case "Precio":
+                            switch (orden)
+                            {
+                                case "Mayor a":
+                                    consulta += "A.Precio >= @filtro";
+                                    break;
+                                case "Menor a":
+                                    consulta += "A.Precio <= @filtro";
+                                    break;
+                                case "Igual a":
+                                    consulta += "A.Precio = @filtro";
+                                    break;
+                            }
+                            break;
+                    }
                 }
-                switch (tipo)
-                {
-                    case "Comienza con":
-                        consulta += "Nombre like '" + filtro + "%' ";
-                        break;
-                    case "Termina con":
-                        consulta += "Nombre like '%" + filtro + "'";
-                        break;
-                    default:
-                        consulta += "Nombre like '%" + filtro + "%'";
-                        break;
-                }
-                switch (tipo)
-                {
-                    case "Mayor a":
-                        consulta += "Precio > " + filtro;
-                        break;
-                    case "Menor a":
-                        consulta += "Precio < " + filtro;
-                        break;
-                    case "Igual a":
-                        consulta += "Precio = " + filtro;
-                        break;
-                }
+
                 datos.setConsulta(consulta);
+                datos.setParametro("@filtro", filtro);
                 datos.ejecutarLectura();
-                
+
                 while (datos.Lector.Read())
                 {
                     articulo aux = new articulo();
@@ -253,7 +272,7 @@ namespace Catalogo
                     aux.precio = (decimal)datos.Lector["Precio"];
 
                     aux.marca = new marca();
-                    aux.marca.idMarca = (int)datos.Lector["marcID"];
+                    aux.marca.idMarca = (int)datos.Lector["IdMarca"];
                     aux.marca.nombre = (string)datos.Lector["marcDesc"];
 
                     aux.categoria = new categoria();
@@ -276,34 +295,39 @@ namespace Catalogo
                 throw ex;
             }
         }
+
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             articulo art = new articulo();
 
             try
-            {            
-                string tipo = cbxTipo.SelectedItem.ToString();
-                string orden = cbxOrden.SelectedItem.ToString();
-                string filtro = txtBusqueda.Text;
+            {
+                string tipo = cbxTipo.SelectedItem != null ? cbxTipo.SelectedItem.ToString() : string.Empty;
+                string orden = cbxOrden.SelectedItem != null ? cbxOrden.SelectedItem.ToString() : string.Empty;
+                string filtro = txtBusqueda.Text.Trim();
+                if (string.IsNullOrEmpty(filtro))
+                {
+                    MessageBox.Show("Por favor, ingrese un filtro de búsqueda.");
+                    return;
+                }
                 dgvArticulos.DataSource = filtrarLista(tipo, orden, filtro);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
         private void btnSiguienteImagen_Click(object sender, EventArgs e)
         {
             articulo seleccionado;
-            seleccionado=(articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
             int contador = 0;
-            
+
             foreach (articulo art in listaArticulo)
-            { 
-                if(art.idArticulo == seleccionado.idArticulo)
+            {
+                if (art.idArticulo == seleccionado.idArticulo)
                 {
                     if (art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == true)
                     {
@@ -312,7 +336,7 @@ namespace Catalogo
                         pbxImagen.Visible = false;
                         contador++;
                     }
-                    else if(art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == false)
+                    else if (art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == false)
                     {
                         cargarImagen(art.imagen.urlImagen);
                         pbxImagen2.Visible = false;
