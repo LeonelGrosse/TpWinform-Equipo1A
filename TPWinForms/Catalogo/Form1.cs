@@ -386,11 +386,14 @@ namespace Catalogo
 
         private void btnVerDetalles_Click(object sender, EventArgs e)
         {
-            cargar();
             articulo seleccionado;
-            seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmVerDetallesArticulo detalles = new frmVerDetallesArticulo(seleccionado);
-            detalles.ShowDialog();
+            if (!(dgvArticulos.CurrentRow == null))
+            {
+                seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmVerDetallesArticulo detalles = new frmVerDetallesArticulo(seleccionado);
+                detalles.ShowDialog();
+                cargar();
+            }
         }
     }
 }
