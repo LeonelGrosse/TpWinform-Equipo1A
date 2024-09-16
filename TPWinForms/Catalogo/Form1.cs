@@ -14,7 +14,8 @@ namespace Catalogo
 {
     public partial class Form1 : Form
     {
-        private List<articulo> listaArticulo;
+        private List<articulo> listaArticulo; 
+        private List<imagen> listaImagen;
         public Form1()
         {
             InitializeComponent();
@@ -339,35 +340,55 @@ namespace Catalogo
             }
         }
 
+        private int imagenActualIndex = -1; 
+        private List<imagen> imagenesDelArticulo = new List<imagen>();
         private void btnSiguienteImagen_Click(object sender, EventArgs e)
-        {
+        {         
+            imagenNegocio imagenNegocio = new imagenNegocio();
+            listaImagen = imagenNegocio.listar();
+
             articulo seleccionado;
             seleccionado = (articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-            int contador = 0;
+            imagenesDelArticulo = listaImagen.Where(img => img.idArticulo == seleccionado.idArticulo).ToList();
 
-            foreach (articulo art in listaArticulo)
+            if (imagenesDelArticulo.Count == 0)
             {
-                if (art.idArticulo == seleccionado.idArticulo)
-                {
-                    if (art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == true)
-                    {
-                        cargarImagen2(art.imagen.urlImagen);
-                        pbxImagen2.Visible = true;
-                        pbxImagen.Visible = false;
-                        contador++;
-                    }
-                    else if (art.imagen.urlImagen != seleccionado.imagen.urlImagen && pbxImagen.Visible == false)
-                    {
-                        cargarImagen(art.imagen.urlImagen);
-                        pbxImagen2.Visible = false;
-                        pbxImagen.Visible = true;
-                        contador++;
-                    }
-                }
+                MessageBox.Show("No hay imágenes para el artículo seleccionado.");
+                return;
             }
-            if (contador == 0)
-                MessageBox.Show("No hay mas imagenes");
+
+            if (imagenActualIndex == -1 || imagenesDelArticulo.Count <= imagenActualIndex)
+            {
+                imagenActualIndex = 0;
+                MostrarImagenActual();
+            }
+            else
+            {
+                int siguienteIndice = (imagenActualIndex + 1) % imagenesDelArticulo.Count;
+
+                imagenActualIndex = siguienteIndice;
+                MostrarImagenActual();
+            }
+        }
+        private void MostrarImagenActual()
+        {
+            if (imagenesDelArticulo.Count == 0) return;
+
+            imagen imagenActual = imagenesDelArticulo[imagenActualIndex];
+
+            if (pbxImagen.Visible)
+            {
+                cargarImagen2(imagenActual.urlImagen);
+                pbxImagen2.Visible = true;
+                pbxImagen.Visible = false;
+            }
+            else
+            {
+                cargarImagen(imagenActual.urlImagen);
+                pbxImagen2.Visible = false;
+                pbxImagen.Visible = true;
+            }
         }
 
         private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
